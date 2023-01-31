@@ -7,11 +7,11 @@ Este é um projeto simples, onde utilizamos a api do trello para listar os board
 Para conseguir as propriedades necessárias para essa requisição (`key`e `token`), utilizamos este [guia](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/).
 
 Desafio se baseia em:
-- Organizar o código do projeto utilizando Clean Architecture.
+- Organizar o código do projeto utilizando algum padrão de sua preferência (MVVM, MVP, etc...).
+- Validar possíveis falhas de segurança.
+- Implementar programação reativa (rxJava ou coroutines).
 - Implementar testes unitários.
 - Implementar testes de UI. (Opcional)
 - Propor soluções e melhorias durante a entrevista, fazendo um pair programming com os devs.
 
 Boa sorte! =)
-
-Obs: Poderá editar o projeto conforme sua vontade, estrutura de pastas, etc...
