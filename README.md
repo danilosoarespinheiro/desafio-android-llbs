@@ -8,6 +8,8 @@ Para conseguir as propriedades necessárias para essa requisição (`key`e `toke
 
 Desafio se baseia em:
 - Organizar o código do projeto utilizando Clean Architecture.
+- Implementar testes unitários.
+- Implementar testes de UI. (Opcional)
 - Propor soluções e melhorias durante a entrevista, fazendo um pair programming com os devs.
 
 Boa sorte! =)
