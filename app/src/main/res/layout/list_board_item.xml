@@ -37,7 +37,7 @@
             android:padding="8dp"
             android:textStyle="bold"
             android:textSize="18sp"
-            tools:text="Boar Name"/>
+            tools:text="Board Name"/>
 
     </LinearLayout>
 
