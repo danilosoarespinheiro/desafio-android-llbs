@@ -6,7 +6,7 @@ Este é um projeto simples e legado, onde utilizamos a api do trello para listar
 
 Para conseguir as propriedades necessárias para essa requisição (`key`e `token`), utilize este [guia](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/).
 
-Desafio se baseia em:
+## Desafio se baseia em:
 - Atualizar ou alterar dependências do projeto (Ex: adicionar Compose, remover/atualizar versões legadas das libs, etc...)
 - Organizar o código do projeto utilizando algum padrão de sua preferência (MVVM, MVP, etc...).
 - Utilize arquitetura limpa (ou inspirada em Clean Architecture)
@@ -17,7 +17,7 @@ Desafio se baseia em:
 - Implementar testes de UI. (Opcional)
 - Configurar um CI/CD básico. (Opcional)
 
-Entregáveis
+## Entregáveis
 Link para um repositório Git (GitHub, GitLab, etc.) com o projeto completo.
 
 Um bom README explicando como rodar o projeto, as decisões arquiteturais, e os pontos fortes da solução.
