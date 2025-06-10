@@ -20,6 +20,6 @@ Desafio se baseia em:
 Entregáveis
 Link para um repositório Git (GitHub, GitLab, etc.) com o projeto completo.
 
-README com instruções simples de build/run.
+Um bom README explicando como rodar o projeto, as decisões arquiteturais, e os pontos fortes da solução.
 
 Boa sorte! =)
