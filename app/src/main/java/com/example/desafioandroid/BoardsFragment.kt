@@ -22,8 +22,8 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 class BoardsFragment : Fragment() {
 
-    private val key = "4827sdfn"
-    private val token = "324nmfsdnTTEfsçlmsmfPPKd"
+    private val key = "43eb465ff503ea135e8e2edc87ea76ee"
+    private val token = "ATTA6b73d3254e721aa27fc5580bd2cca11883ba20d33396d85b240dadc82015207a552CFB04"
     private val url = "https://api.trello.com/1/members/me/"
 
     private val gson: Gson by lazy { GsonBuilder().create() }
