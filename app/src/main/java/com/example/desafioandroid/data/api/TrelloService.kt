@@ -1,5 +1,6 @@
-package com.example.desafioandroid
+package com.example.desafioandroid.data.api
 
+import com.example.desafioandroid.domain.model.Boards
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -1,4 +1,4 @@
-package com.example.desafioandroid
+package com.example.desafioandroid.domain.model
 
 class Boards : ArrayList<BoardItem>()
 

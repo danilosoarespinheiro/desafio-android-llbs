@@ -1,8 +1,9 @@
-package com.example.desafioandroid
+package com.example.desafioandroid.presentation.boards
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.desafioandroid.domain.model.Boards
 import com.example.desafioandroid.databinding.ListBoardItemBinding
 
 /**

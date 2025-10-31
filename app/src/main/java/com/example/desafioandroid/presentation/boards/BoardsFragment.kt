@@ -1,4 +1,4 @@
-package com.example.desafioandroid
+package com.example.desafioandroid.presentation.boards
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.desafioandroid.domain.model.Boards
+import com.example.desafioandroid.BuildConfig
+import com.example.desafioandroid.data.api.TrelloService
 import com.example.desafioandroid.databinding.FragmentBoardsBinding
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -22,9 +25,9 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 class BoardsFragment : Fragment() {
 
-    private val key = "43eb465ff503ea135e8e2edc87ea76ee"
-    private val token = "ATTA6b73d3254e721aa27fc5580bd2cca11883ba20d33396d85b240dadc82015207a552CFB04"
-    private val url = "https://api.trello.com/1/members/me/"
+    private val key = BuildConfig.API_KEY
+    private val token = BuildConfig.API_TOKEN
+    private val url = BuildConfig.API_URL
 
     private val gson: Gson by lazy { GsonBuilder().create() }
 
