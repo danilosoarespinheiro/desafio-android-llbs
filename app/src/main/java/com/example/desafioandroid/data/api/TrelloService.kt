@@ -1,7 +1,6 @@
 package com.example.desafioandroid.data.api
 
-import com.example.desafioandroid.domain.model.Boards
-import retrofit2.Call
+import com.example.desafioandroid.data.api.dto.BoardDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -11,8 +10,8 @@ import retrofit2.http.Query
 interface TrelloService {
 
     @GET("boards")
-    fun getBoards(
+    suspend fun getBoards(
         @Query("key") key: String,
         @Query("token") token: String
-    ): Call<Boards>
+    ): List<BoardDto>
 }

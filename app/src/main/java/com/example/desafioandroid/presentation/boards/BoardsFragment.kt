@@ -5,51 +5,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.desafioandroid.domain.model.Boards
-import com.example.desafioandroid.BuildConfig
-import com.example.desafioandroid.data.api.TrelloService
 import com.example.desafioandroid.databinding.FragmentBoardsBinding
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import okhttp3.OkHttpClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
+
+@AndroidEntryPoint
 class BoardsFragment : Fragment() {
 
-    private val key = BuildConfig.API_KEY
-    private val token = BuildConfig.API_TOKEN
-    private val url = BuildConfig.API_URL
-
-    private val gson: Gson by lazy { GsonBuilder().create() }
-
-    private val okHttp: OkHttpClient by lazy { OkHttpClient.Builder().build() }
-
-    private val retrofit: Retrofit by lazy {
-        Retrofit.Builder()
-            .baseUrl(url)
-            .client(okHttp)
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
-    }
-
-    private val service: TrelloService by lazy {
-        retrofit.create(TrelloService::class.java)
-    }
-
     private var _binding: FragmentBoardsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+
+    private val viewModel: BoardsViewModel by viewModels()
+    private lateinit var boardAdapter: BoardAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,38 +33,41 @@ class BoardsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentBoardsBinding.inflate(inflater, container, false)
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
+        setupRecyclerView()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeUiState()
+    }
 
-        binding.progressBar.visibility = View.VISIBLE
+    private fun setupRecyclerView() {
+        boardAdapter = BoardAdapter(emptyList())
+        binding.recyclerView.apply {
+            adapter = boardAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+    }
 
-        service.getBoards(key = key, token = token)
-            .enqueue(object : Callback<Boards> {
+    private fun observeUiState() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.uiState.collect { state ->
+                binding.progressBar.isVisible = state is BoardUiState.Loading
 
-                override fun onFailure(call: Call<Boards>, t: Throwable) {
-                    binding.progressBar.visibility = View.GONE
-
-                    val message = t.message
-                    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-                }
-
-                override fun onResponse(call: Call<Boards>, response: Response<Boards>) {
-                    binding.progressBar.visibility = View.GONE
-
-                    if (response.isSuccessful) {
-                        val boards = response.body()!!
-                        binding.recyclerView.adapter = BoardAdapter(boards)
-                    } else {
-                        val message = response.message()
-                        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+                when (state) {
+                    is BoardUiState.Success -> {
+                        boardAdapter.updateData(state.boards)
+                    }
+                    is BoardUiState.Error -> {
+                        Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
+                    }
+                    is BoardUiState.Loading -> {
+                        // Handled by the isVisible binding above
                     }
                 }
-            })
+            }
+        }
     }
 
     override fun onDestroyView() {

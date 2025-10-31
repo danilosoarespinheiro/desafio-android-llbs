@@ -8,12 +8,14 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.desafioandroid.R
 import com.example.desafioandroid.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * The main and only activity for this application.
  *
  * This activity hosts the navigation graph and sets up the toolbar and navigation controller.
  */
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration

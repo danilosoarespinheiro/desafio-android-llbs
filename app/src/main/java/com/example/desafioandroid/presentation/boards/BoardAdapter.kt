@@ -1,17 +1,18 @@
 package com.example.desafioandroid.presentation.boards
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.desafioandroid.domain.model.Boards
 import com.example.desafioandroid.databinding.ListBoardItemBinding
+import com.example.desafioandroid.domain.model.Board
 
 /**
- * A [RecyclerView.Adapter] that can display a list of [Boards] items.
- * @property boards The list of [Boards] objects to be displayed by the adapter.
+ * A [RecyclerView.Adapter] that can display a list of [Board] items.
+ * @property boards The list of [Board] objects to be displayed by the adapter.
  */
 class BoardAdapter(
-    private val boards: Boards
+    private var boards: List<Board>
 ) : RecyclerView.Adapter<BoardItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BoardItemViewHolder {
@@ -29,4 +30,10 @@ class BoardAdapter(
     }
 
     override fun getItemCount(): Int = boards.size
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newBoards: List<Board>) {
+        this.boards = newBoards
+        notifyDataSetChanged() // This tells the adapter to refresh the entire list.
+    }
 }
