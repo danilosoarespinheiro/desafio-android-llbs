@@ -34,6 +34,6 @@ class BoardAdapter(
     @SuppressLint("NotifyDataSetChanged")
     fun updateData(newBoards: List<Board>) {
         this.boards = newBoards
-        notifyDataSetChanged() // This tells the adapter to refresh the entire list.
+        notifyDataSetChanged()
     }
 }

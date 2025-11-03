@@ -21,7 +21,6 @@ class BoardsRepositoryImpl @Inject constructor(
                 key = BuildConfig.API_KEY,
                 token = BuildConfig.API_TOKEN
             )
-            // Map DTOs to Domain models
             val boards = boardsDto.map { Board(id = it.id, name = it.name, desc = it.desc, closed = it.closed) }
             Result.success(boards)
         } catch (e: Exception) {
