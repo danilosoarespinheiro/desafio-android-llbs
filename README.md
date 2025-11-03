@@ -30,8 +30,8 @@ Boa sorte! =)
 
 Para executar o projeto, siga os passos abaixo:
 
-  1. Clone o Repositório:git clone [URL do seu repositório]
-  cd [nome-do-repositorio]
+  1. Clone o Repositório:
+  <img width="530" height="29" alt="Screenshot 2025-11-03 at 01 46 26" src="https://github.com/user-attachments/assets/3ea7292e-0cb2-459d-9cba-12c63de064f4" />
 
   2. Obtenha as Credenciais da API do Trello: O projeto requer uma chave (key) e um token de acesso (token) da API do Trello. Siga o guia oficial da Atlassian para gerá-los.
 
@@ -39,8 +39,7 @@ Para executar o projeto, siga os passos abaixo:
    - No diretório raiz do projeto, crie ou edite o arquivo local.properties.
    - Adicione sua chave e token ao arquivo da seguinte forma:
 
-  API_KEY="SUA_CHAVE_DA_API_AQUI"
-  API_TOKEN="SEU_TOKEN_DA_API_AQUI"
+  <img width="377" height="75" alt="Screenshot 2025-11-03 at 01 44 17" src="https://github.com/user-attachments/assets/d63919ff-02cb-4537-901f-41ec1f45aa35" />
 
   4. Abra e Execute no Android Studio:◦Abra o projeto no Android Studio.◦Aguarde o Gradle sincronizar as dependências.◦Execute o aplicativo em um emulador ou dispositivo físico. O app irá buscar e exibir os quadros associados às suas credenciais.
 
